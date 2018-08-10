@@ -1,0 +1,25 @@
+USE [FMBPublic]
+GO
+
+/****** Object:  Table [dbo].[tblFMBPublic]    Script Date: 8/10/2018 12:40:53 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[tblFMBPublic](
+	[TableID] [int] IDENTITY(1,1) NOT NULL,
+	[XmlData] [xml] NOT NULL,
+	[XMLDataID] [varchar](50) NULL,
+	[PhotoLocation] [varchar](Max) NULL,
+	[IsActive] [char](1) NULL,
+	[CreatedDate]  AS (getdate()),
+ CONSTRAINT [PK_FMBPublic_Table] PRIMARY KEY CLUSTERED 
+(
+	[TableID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+
