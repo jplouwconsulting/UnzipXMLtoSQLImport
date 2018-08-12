@@ -1,0 +1,41 @@
+USE [FMBPublic]
+GO
+
+/****** Object:  StoredProcedure [dbo].[spInsertXMLData]    Script Date: 8/12/2018 12:53:56 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:		Juan Louw
+-- Create date: <8/10/2018>
+-- Description:	<Sproc used to upload XML data into SQL through SSIS package>
+-- =============================================
+CREATE PROCEDURE [dbo].[spInsertXMLData]
+	-- Add the parameters for the stored procedure here
+	@XMLDataID	varchar(50),
+	@PhotoLocation varchar(Max),
+	@FileLocation varchar(Max)
+
+AS
+	BEGIN
+		-- SET NOCOUNT ON added to prevent extra result sets from
+		-- interfering with SELECT statements.
+		SET NOCOUNT ON;
+
+		-- Insert statements for procedure here
+		Declare @sql nvarchar(max)
+	set @sql = 'INSERT INTO [tblFMBPublic]([XMLData],	[XMLDataID], [PhotoLocation],[IsActive]	)
+				SELECT 
+					CONVERT(XML, BulkColumn) AS BulkColumn,
+					'''+ @XMLDataID +''', '''+ @PhotoLocation +''',''Y''
+				FROM OPENROWSET(BULK '''+ @FileLocation + ''', SINGLE_BLOB) AS x;' 
+	 
+	Print (@sql)
+	Exec (@sql)
+END
+GO
+
+
