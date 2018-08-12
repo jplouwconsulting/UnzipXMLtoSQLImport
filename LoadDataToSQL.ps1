@@ -1,10 +1,7 @@
-get-Childitem -Path "C:\FMBPublic\Downloads\Upload\dm_spl_release_human_rx_part1\prescription\*" -Include *.xml -Recurse
-$XMLFiles
-
-$XMLFiles = get-childitem "C:\FMBPublic\Downloads\Upload\dm_spl_release_human_rx_part1\prescription\" -recurse | where {$_.extension -eq ".xml"} | % {
+$XMLFiles = get-childitem "C:\FMBPublic\Downloads\Upload\dm_spl_release_human_rx_part3\prescription\" -recurse | where {$_.extension -eq ".xml"} | % {
       $_.FullName
 }
-
+$XMLFiles
 
 Foreach ($XMLFile in $XMLFiles) {
 $XMLFileName = Split-Path $XMLFile -leaf
@@ -32,6 +29,6 @@ $SqlConnection.Close()
 $DataSet.Tables[0]
 
 Clear-Variable -Name sqlCommand
-$SqlCommand
-pause
+#$SqlCommand
+
 }
