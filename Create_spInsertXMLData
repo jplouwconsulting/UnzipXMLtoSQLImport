@@ -27,7 +27,7 @@ AS
 
 		-- Insert statements for procedure here
 		Declare @sql nvarchar(max)
-	set @sql = 'INSERT INTO [tblFMBPublic]([XMLData],	[XMLDataID], [PhotoLocation],[IsActive]	)
+	set @sql = 'INSERT INTO [tblDrugData]([XMLData],	[XMLDataID], [PhotoLocation],[IsActive]	)
 				SELECT 
 					CONVERT(XML, BulkColumn) AS BulkColumn,
 					'''+ @XMLDataID +''', '''+ @PhotoLocation +''',''Y''
