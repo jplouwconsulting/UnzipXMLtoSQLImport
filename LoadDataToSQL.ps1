@@ -12,7 +12,7 @@ $XMLFileName = $XMLFileName -Replace '.xml',''
 #$XMLFile
 
 $SqlConnection = new-object System.Data.SqlClient.SqlConnection
-$SqlConnection.ConnectionString = "Data Source=SQL2016;Database=FMBPublic;Integrated Security=True;"
+$SqlConnection.ConnectionString = "Data Source=SQL2016;Database=DrugData;Integrated Security=True;"
 $SqlCommand = New-Object System.Data.SqlClient.SqlCommand
 $SqlCommand.CommandText = "Exec [dbo].[spInsertXMLData] @XMLDataID, @PhotoLocation, @FileLocation"
 $SqlCommand
