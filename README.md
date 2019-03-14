@@ -6,6 +6,6 @@ Project required the download of data from the web, unzip and import into SQL
 <li>Created Database Table
 <li>Created Stored Procedure to upload the XML files into the defined database
 
-14852 files in part 1
-11584 files in part 2
- files in part 3
+<li>14852 files in part 1
+<li>11584 files in part 2
+<li>20000 files in part 3
